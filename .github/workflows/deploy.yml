@@ -14,9 +14,10 @@ jobs:
           go-version: '1.22'
 
       - run: go run . --build
-
-      - uses: vercel/action@v2
+      - uses: vercel/vercel-action@v1
         with:
-          token: ${{ secrets.VERCEL_TOKEN }}
-          prod: true
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           working-directory: output
+          prod: true
