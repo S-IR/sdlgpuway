@@ -1,0 +1,14 @@
+{{define "sidebar"}}
+<aside>
+  <h2 class="text-xl font-bold mb-4">Tutorials</h2>
+  <nav class="space-y-2">
+    {{if eq .ChosenLanguage "Odin"}}
+      <a href="/tutorials/sdl-gpu/odin/prerequisites" {{if eq .CurrentPage "/tutorials/sdl-gpu/odin/prerequisites"}}class="active"{{end}}>Prerequisites (Odin)</a>
+      <a href="/tutorials/sdl-gpu/odin/chapter-1-hello-gpu/" {{if hasPrefix .CurrentPage "/tutorials/sdl-gpu/odin/chapter-1-hello-gpu/"}}class="active"{{end}}>Chapter 1 (Odin)</a>
+    {{else if eq .ChosenLanguage "C"}}
+      <a href="/tutorials/sdl-gpu/c/prerequisites" {{if eq .CurrentPage "/tutorials/sdl-gpu/c/prerequisites"}}class="active"{{end}}>Prerequisites (C)</a>
+      <a href="/tutorials/sdl-gpu/c/chapter-1-hello-gpu/" {{if hasPrefix .CurrentPage "/tutorials/sdl-gpu/c/chapter-1-hello-gpu/"}}class="active"{{end}}>Chapter 1 (C)</a>
+    {{end}}
+  </nav>
+</aside>
+{{end}}
