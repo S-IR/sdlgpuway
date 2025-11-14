@@ -105,7 +105,7 @@ func renderTemplate(w io.Writer, page Page) {
 			panic(err)
 		}
 	}
-	type ChosenLanguage =  string
+	type ChosenLanguage = string
 	const (
 		C    ChosenLanguage = "C"
 		Odin ChosenLanguage = "Odin"
@@ -126,10 +126,10 @@ func renderTemplate(w io.Writer, page Page) {
 		Description    string
 		ChosenLanguage ChosenLanguage
 	}{
-		Page:        page,
-		CurrentPage: page.Path,
-		Title:       page.Title,
-		Description: page.Description,
+		Page:           page,
+		CurrentPage:    page.Path,
+		Title:          page.Title,
+		Description:    page.Description,
 		ChosenLanguage: chosenLanguage,
 	}
 
@@ -186,4 +186,16 @@ func generateStaticSite() {
 		log.Printf("Generated: %s", outputPath)
 	}
 	CopyDir("./static/", "./public/static/")
+	debugGeneratedFiles()
+}
+func debugGeneratedFiles() {
+	filepath.Walk("public", func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if !info.IsDir() {
+			log.Printf("Generated file: %s", path)
+		}
+		return nil
+	})
 }
