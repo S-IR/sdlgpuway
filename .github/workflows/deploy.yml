@@ -27,7 +27,7 @@ jobs:
           go-version: '1.25'  # Matches your code's needs
 
       - name: Build site
-        run: go run main.go -build  # Your exact build command
+        run: go run . -build  # Your exact build command
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
