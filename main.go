@@ -163,12 +163,12 @@ func startDevServer() {
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 func generateStaticSite() {
-	os.RemoveAll("public12")
-	os.MkdirAll("public12", 0755)
+	os.RemoveAll("public")
+	os.MkdirAll("public", 0755)
 
 	for _, page := range Pages {
 
-		outputPath := filepath.Join("public12", page.Path)
+		outputPath := filepath.Join("public", page.Path)
 		if filepath.Ext(outputPath) == "" {
 			outputPath = filepath.Join(outputPath, "index.html")
 		}
@@ -185,5 +185,5 @@ func generateStaticSite() {
 
 		log.Printf("Generated: %s", outputPath)
 	}
-	CopyDir("./static/", "./output/static/")
+	CopyDir("./static/", "./public/static/")
 }
